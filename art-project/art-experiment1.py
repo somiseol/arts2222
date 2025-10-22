@@ -3,27 +3,31 @@ import os
 import time
 
 from turtle import Turtle
-from random import random
+from random import random # use in the future some way
+
+os.system('clear')
 
 a = sys.argv[1]
 
-print(a)
+print(a, end="")
 
 t = Turtle()
 t.hideturtle()
 t.width(3)
 t.color('red')
 
-i = 1
-while True:
-    t.forward(i * 2)
-    t.right(100 / i)
+def output_scr(i, speed, angle, lines_to_clr):
+    print(f"i = {i}\nspeed = {speed}\nangle = {angle:.2f}", end='')
+    print(f"\033[{lines_to_clr}F", end='')
 
-    i += 1 # i is 1/10th of a second
-    print(f"\ri = {i}", end='', flush=True)
-    time.sleep(0.01)
 
-    if i >= 50:
-        break
+for i in range(1, 50):
+    time.sleep(0.01) # seconds
 
-t.done()
+    speed = i * 2
+    angle = 100 / i
+
+    t.forward(speed)
+    t.right(angle)
+
+    output_scr(i, speed, angle, 3)
