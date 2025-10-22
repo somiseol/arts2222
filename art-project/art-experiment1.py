@@ -7,9 +7,10 @@ from random import random # use in the future some way
 
 os.system('clear')
 
-a = sys.argv[1]
-
-print(a, end="")
+try:
+    a = sys.argv[1]
+except IndexError:
+    a = "indexerror"
 
 t = Turtle()
 t.hideturtle()
@@ -17,7 +18,7 @@ t.width(3)
 t.color('red')
 
 def output_scr(i, speed, angle, lines_to_clr):
-    print(f"i = {i}\nspeed = {speed}\nangle = {angle:.2f}", end='')
+    print(f"{a}\ni = {i}\nspeed = {speed}\nangle = {angle:.2f}", end='')
     print(f"\033[{lines_to_clr}F", end='')
 
 
@@ -30,4 +31,4 @@ for i in range(1, 50):
     t.forward(speed)
     t.right(angle)
 
-    output_scr(i, speed, angle, 3)
+    output_scr(i, speed, angle, 4)
