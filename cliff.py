@@ -6,7 +6,7 @@ import random
 color_list = ["red", "green", "blue", "white"]
 
 # starting parameters
-param_restrict = 3
+param_restrict = 5
 pr = param_restrict
 A = random.uniform(pr * -1, pr)
 B = random.uniform(pr * -1, pr)
@@ -30,7 +30,7 @@ SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 800
 
 # dot size for the plotted points
-DOT_SIZE = 2
+DOT_SIZE = 1
 
 # setup screen
 def setup_turtle():
@@ -54,16 +54,15 @@ def setup_turtle():
 def draw_clifford_attractor():
     screen, t = setup_turtle()
 
-    t.color('cyan')# random color
+    t.color('white')# random color
     # initial starting points
-    x = 0.1
-    y = 0.1
+    x = 0.0
+    y = 0.0
 
     # set color
     # t.color("white")
 
     for i in range(ITERATIONS):
-#        t.color()
         # 1. Clifford Attractor Equations:
         # x_n+1 = sin(a * y_n) + c * cos(a * x_n)
         # y_n+1 = sin(b * x_n) + d * cos(b * y_n)
