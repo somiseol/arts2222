@@ -4,7 +4,7 @@ import math
 import random
 
 # number of points to calculate and draw
-ITERATIONS = 30000
+ITERATIONS = 25000
 
 # screen dimensions
 SCREEN_WIDTH = 800
@@ -15,7 +15,7 @@ DOT_SIZE = 1
 
 # setup
 def setup_turtle():
-    color_list = ["red", "lightgreen", "cyan", "orange", "magenta", "yellow"]
+    color_list = ["cyan", "yellow", "magenta", "white"]
     screen = turtle.Screen()
     screen.setup(SCREEN_WIDTH, SCREEN_HEIGHT)
     screen.bgcolor("black")
@@ -39,19 +39,19 @@ def setup_turtle():
         random_color = color_list.pop(random.randrange(0, len(color_list)))
         t_list[i].color(random_color)
 
-        # TODO heuristic check
+        #cannot figure out heuristic check
         rand_A = random.uniform(-1 * base_param_restrict, base_param_restrict)
         rand_B = random.uniform(-1 * base_param_restrict, base_param_restrict)
         rand_C = random.uniform(-1 * base_param_restrict, base_param_restrict)
         rand_D = random.uniform(-1 * base_param_restrict, base_param_restrict)
-        rand_Scale = 200 #random.randrange(1, 3) * 100
+        rand_Scale = random.randrange(100, 300, 100)
         rand_size = random.randrange(1, 3)
 
         base_params = (rand_A, rand_B, rand_C, rand_D, rand_Scale, random_color, rand_size)
 
         t_list_attr.append(base_params)
 
-    os.system('i3-msg resize set width 90ppt')
+    os.system('i3-msg resize set width 90ppt') # i3 specific
     os.system('clear')
     msg("what do you see?")
 
@@ -70,8 +70,8 @@ def msg(msg):
 def draw_clifford_attractor():
     screen, t_list, t_list_attr = setup_turtle()
 
-    x = 0.1
-    y = 0.1
+    x = 0.01
+    y = 0.01
 
     for i in range(ITERATIONS):
         # Clifford Attractor Equations:
